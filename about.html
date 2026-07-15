@@ -1,79 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Asmara Roofing & Construction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========================================
+           ROOT VARIABLES
+           ======================================== */
+        :root {
+            --primary: #1a3a4a;
+            --primary-light: #2c5a6e;
+            --primary-dark: #0d1f28;
+            --secondary: #e67e22;
+            --secondary-light: #f39c12;
+            --accent: #3498db;
+            --text-light: #ecf0f1;
+            --text-dark: #2c3e50;
+            --text-gray: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 40px rgba(0,0,0,0.15);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-{% extends 'roofing/base.html' %}
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-{% block title %}About Us - Asmara Roofing & Construction{% endblock %}
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
 
-{% block content %}
-<div class="hero">
-    <h1>About Asmara Roofing & Construction</h1>
-    <p>Your trusted partner in quality roofing and construction</p>
-</div>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
 
-<div class="section">
-    <h2>👥 Our Company</h2>
-    <p>Asmara Roofing & Construction Inc has been serving the community for over 15 years. We are committed to delivering exceptional quality and customer service.</p>
-    
-    <p style="margin-top: 1rem;">Our team consists of highly trained and certified professionals who take pride in their work. We believe in:</p>
-    <ul style="margin-left: 2rem; margin-top: 1rem; list-style: disc;">
-        <li><strong>Quality:</strong> We never compromise on quality materials or workmanship</li>
-        <li><strong>Reliability:</strong> We show up on time and complete projects as promised</li>
-        <li><strong>Customer Satisfaction:</strong> Your satisfaction is our ultimate goal</li>
-        <li><strong>Integrity:</strong> We operate with honesty and transparency</li>
-        <li><strong>Safety:</strong> We follow all safety protocols to protect our team and clients</li>
-    </ul>
-</div>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-<div class="section">
-    <h2>🏆 Why Choose Us?</h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <h3>15+ Years Experience</h3>
-            <p>Proven track record of successful projects and satisfied customers</p>
-        </div>
-        <div class="service-card">
-            <h3>Licensed & Insured</h3>
-            <p>Fully licensed and insured for your peace of mind</p>
-        </div>
-        <div class="service-card">
-            <h3>Free Estimates</h3>
-            <p>Comprehensive free estimates with no hidden costs</p>
-        </div>
-        <div class="service-card">
-            <h3>Warranty</h3>
-            <p>All work backed by comprehensive warranties</p>
-        </div>
-        <div class="service-card">
-            <h3>Local Service</h3>
-            <p>Serving the local community with pride</p>
-        </div>
-        <div class="service-card">
-            <h3>24/7 Support</h3>
-            <p>Emergency services available when you need us</p>
-        </div>
-    </div>
-</div>
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-<div class="section">
-    <h2>📈 Our Track Record</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; text-align: center;">
-        <div>
-            <h3 style="font-size: 2.5rem; color: #f39c12;">500+</h3>
-            <p>Successful Projects</p>
-        </div>
-        <div>
-            <h3 style="font-size: 2.5rem; color: #f39c12;">1000+</h3>
-            <p>Satisfied Customers</p>
-        </div>
-        <div>
-            <h3 style="font-size: 2.5rem; color: #f39c12;">99%</h3>
-            <p>Customer Satisfaction</p>
-        </div>
-    </div>
-</div>
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
 
-<div class="section" style="text-align: center;">
-    <h2>Ready to work with us?</h2>
-    <p style="margin: 1rem 0;">Contact us today for a free consultation and estimate.</p>
-    <a href="/contact/" class="cta-button">Get in Touch</a>
-</div>
-{% endblock %}
+        /* ========================================
+           HEADER
+           ======================================== */
+        .header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav a {
+            padding: 10px 18px;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        .nav a.active {
+            color: var(--secondary);
+        }
+
+        .nav-cta {
+            background: var(--secondary);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 24px !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--secondary-light) !important;
+        }
+
+        /* ========================================
+           PAGE HERO
+           ======================================== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 80px 0 50px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .page-hero h1 span {
+            color: var(--secondary);
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           SECTIONS
+           ======================================== */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background: var(--bg-white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-header .badge {
+            display: inline-block;
+            background: rgba(230, 126, 34, 0.1);
+            color: var(--secondary);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 i {
+            color: var(--secondary);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-gray);
+        }
+
+        /* ========================================
+           ABOUT CONTENT
+           ======================================== */
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 17px;
+            color: var(--text-dark);
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 30px auto 0;
+        }
+
+        .value-item {
+            background: var(--bg-white);
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .value-item h4 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .value-item p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* ========================================
+           FEATURES GRID
+           ======================================== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-card .icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* ========================================
+           STATS
+           ======================================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-top: 5px;
+        }
+
+        /* ========================================
+           CTA SECTION
+           ======================================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-section h2 span {
+            color: var(--secondary);
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: var(--transition);
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 i {
+            color: var(--secondary);
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .footer-col a {
+            display: block;
+            opacity: 0.7;
+            font-size: 14px;
+            padding: 4px 0;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .page-hero h1 {
+                font-size: 32px;
+            }
+
+            .page-hero p {
+                font-size: 17px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .values-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .values-list {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+    HEADER
+    ========================================== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hard-hat"></i>
+                    Asmara<span>Roofing</span>
+                </div>
+                <nav class="nav">
+                    <a href="/">Home</a>
+                    <a href="about.html" class="active">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="contact.html" class="nav-cta">
+                        <i class="fas fa-phone"></i> Get Quote
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+    PAGE HERO
+    ========================================== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About <span>Asmara Roofing</span> & Construction</h1>
+            <p>Your trusted partner in quality roofing and construction</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    ABOUT SECTION
+    ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">About Us</span>
+                <h2>👥 Our <i>Company</i></h2>
+                <p>Asmara Roofing & Construction Inc has been serving the community for over 15 years. We are committed to delivering exceptional quality and customer service.</p>
+            </div>
+
+            <div class="about-text">
+                <p>Our team consists of highly trained and certified professionals who take pride in their work. We believe in:</p>
+            </div>
+
+            <div class="values-list">
+                <div class="value-item">
+                    <h4>⭐ Quality</h4>
+                    <p>We never compromise on quality materials or workmanship</p>
+                </div>
+                <div class="value-item">
+                    <h4>🤝 Reliability</h4>
+                    <p>We show up on time and complete projects as promised</p>
+                </div>
+                <div class="value-item">
+                    <h4>😊 Customer Satisfaction</h4>
+                    <p>Your satisfaction is our ultimate goal</p>
+                </div>
+                <div class="value-item">
+                    <h4>🔒 Integrity</h4>
+                    <p>We operate with honesty and transparency</p>
+                </div>
+                <div class="value-item">
+                    <h4>🛡️ Safety</h4>
+                    <p>We follow all safety protocols to protect our team and clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    WHY CHOOSE US
+    ========================================== -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Why Choose Us</span>
+                <h2>🏆 Why <i>Choose Us</i></h2>
+                <p>Experience, quality, and reliability you can count on</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="icon">📅</span>
+                    <h3>15+ Years Experience</h3>
+                    <p>Proven track record of successful projects and satisfied customers</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">✅</span>
+                    <h3>Licensed & Insured</h3>
+                    <p>Fully licensed and insured for your peace of mind</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">📋</span>
+                    <h3>Free Estimates</h3>
+                    <p>Comprehensive free estimates with no hidden costs</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🛡️</span>
+                    <h3>Warranty</h3>
+                    <p>All work backed by comprehensive warranties</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">🏠</span>
+                    <h3>Local Service</h3>
+                    <p>Serving the local community with pride</p>
+                </div>
+                <div class="feature-card">
+                    <span class="icon">📞</span>
+                    <h3>24/7 Support</h3>
+                    <p>Emergency services available when you need us</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    STATS / TRACK RECORD
+    ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Our Track Record</span>
+                <h2>📈 Our <i>Track Record</i></h2>
+                <p>Numbers that speak to our commitment and quality</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Successful Projects</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1000+</h3>
+                    <p>Satisfied Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99%</h3>
+                    <p>Customer Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    CTA SECTION
+    ========================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to work with <span>us</span>?</h2>
+            <p>Contact us today for a free consultation and estimate.</p>
+            <div>
+                <a href="contact.html" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i> Get In Touch
+                </a>
+                <a href="services.html" class="btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Our Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    FOOTER
+    ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-hard-hat"></i> Asmara Roofing</h3>
+                    <p>Your trusted partner for professional roofing and construction services. Quality, reliability, and excellence since 2008.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="/">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="services.html">Roof Installation</a>
+                    <a href="services.html">Roof Repairs</a>
+                    <a href="services.html">Maintenance</a>
+                    <a href="services.html">Inspection</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+1234567890"><i class="fas fa-phone"></i> (123) 456-7890</a>
+                    <a href="mailto:info@asmararoofing.com"><i class="fas fa-envelope"></i> info@asmararoofing.com</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> 123 Main St, City</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Asmara Roofing & Construction. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart" style="color: #e67e22;"></i> for our customers</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
