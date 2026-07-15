@@ -1,89 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Asmara Roofing & Construction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========================================
+           ROOT VARIABLES
+           ======================================== */
+        :root {
+            --primary: #1a3a4a;
+            --primary-light: #2c5a6e;
+            --primary-dark: #0d1f28;
+            --secondary: #e67e22;
+            --secondary-light: #f39c12;
+            --text-dark: #2c3e50;
+            --text-gray: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 40px rgba(0,0,0,0.15);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-{% extends 'roofing/base.html' %}
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-{% block title %}Services - Asmara Roofing & Construction{% endblock %}
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
 
-{% block content %}
-<div class="hero">
-    <h1>Our Services</h1>
-    <p>Comprehensive roofing and construction solutions</p>
-</div>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
 
-<div class="section">
-    <h2>🏗️ Roof Installation</h2>
-    <p>Whether you're building a new home or office, we provide professional roof installation services using premium materials and proven techniques.</p>
-    
-    <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Includes:</h3>
-    <ul style="margin-left: 2rem; list-style: disc;">
-        <li>Professional assessment and planning</li>
-        <li>Quality material selection</li>
-        <li>Expert installation</li>
-        <li>Weather seal protection</li>
-        <li>Quality inspection</li>
-    </ul>
-    
-    <p style="margin-top: 1.5rem; color: #f39c12; font-weight: bold;">Starting from: $2,500</p>
-</div>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-<div class="section">
-    <h2>🔧 Roof Repairs</h2>
-    <p>Leaky or damaged roof? We can diagnose and fix the problem quickly to prevent further damage to your property.</p>
-    
-    <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Common Repairs:</h3>
-    <ul style="margin-left: 2rem; list-style: disc;">
-        <li>Leak detection and repair</li>
-        <li>Shingle replacement</li>
-        <li>Flashing repair</li>
-        <li>Gutter repair and maintenance</li>
-        <li>Storm damage repair</li>
-        <li>Chimney and vent sealing</li>
-    </ul>
-    
-    <p style="margin-top: 1.5rem; color: #f39c12; font-weight: bold;">Starting from: $500</p>
-</div>
+        /* ========================================
+           HEADER
+           ======================================== */
+        .header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
 
-<div class="section">
-    <h2>🧹 Roof Maintenance</h2>
-    <p>Regular maintenance extends your roof's lifespan and prevents costly repairs down the road.</p>
-    
-    <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Maintenance Services:</h3>
-    <ul style="margin-left: 2rem; list-style: disc;">
-        <li>Annual roof inspection</li>
-        <li>Debris removal</li>
-        <li>Gutter cleaning</li>
-        <li>Moss and algae treatment</li>
-        <li>Minor repairs and adjustments</li>
-        <li>Preventive care consultation</li>
-    </ul>
-    
-    <p style="margin-top: 1.5rem; color: #f39c12; font-weight: bold;">Annual Plans Available</p>
-</div>
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-<div class="section">
-    <h2>🏘️ Specialty Services</h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <h3>Commercial Roofing</h3>
-            <p>Large-scale commercial projects handled by our expert team with minimal disruption</p>
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav a {
+            padding: 10px 18px;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        .nav a.active {
+            color: var(--secondary);
+        }
+
+        .nav-cta {
+            background: var(--secondary);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 24px !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--secondary-light) !important;
+        }
+
+        /* ========================================
+           PAGE HERO
+           ======================================== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 80px 0 50px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .page-hero h1 span {
+            color: var(--secondary);
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           SECTIONS
+           ======================================== */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-alt {
+            background: var(--bg-white);
+        }
+
+        .section-light {
+            background: #f0f8fb;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .section-header .badge {
+            display: inline-block;
+            background: rgba(230, 126, 34, 0.1);
+            color: var(--secondary);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 i {
+            color: var(--secondary);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-gray);
+        }
+
+        /* ========================================
+           SERVICE DETAILS
+           ======================================== */
+        .service-detail {
+            background: var(--bg-white);
+            padding: 35px 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--secondary);
+            transition: var(--transition);
+        }
+
+        .service-detail:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateX(5px);
+        }
+
+        .service-detail h2 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .service-detail h2 i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        .service-detail p {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .service-detail h3 {
+            color: var(--primary);
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .service-detail ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+            margin: 10px 0 15px;
+        }
+
+        .service-detail ul li {
+            padding: 6px 0 6px 28px;
+            position: relative;
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+
+        .service-detail ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .service-detail .price-tag {
+            display: inline-block;
+            background: rgba(230, 126, 34, 0.1);
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* ========================================
+           SPECIALTY SERVICES GRID
+           ======================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 30px 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-bottom-color: var(--secondary);
+        }
+
+        .service-card .icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* ========================================
+           CTA SECTION
+           ======================================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-section h2 i {
+            color: var(--secondary);
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(230, 126, 34, 0.4);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 i {
+            color: var(--secondary);
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .footer-col a {
+            display: block;
+            opacity: 0.7;
+            font-size: 14px;
+            padding: 4px 0;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .page-hero h1 {
+                font-size: 32px;
+            }
+
+            .page-hero p {
+                font-size: 17px;
+            }
+
+            .service-detail {
+                padding: 25px 20px;
+            }
+
+            .service-detail h2 {
+                font-size: 22px;
+            }
+
+            .service-detail ul {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .service-detail {
+                padding: 20px 15px;
+            }
+
+            .service-detail ul li {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+    HEADER
+    ========================================== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hard-hat"></i>
+                    Asmara<span>Roofing</span>
+                </div>
+                <nav class="nav">
+                    <a href="/">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html" class="active">Services</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="contact.html" class="nav-cta">
+                        <i class="fas fa-phone"></i> Get Quote
+                    </a>
+                </nav>
+            </div>
         </div>
-        <div class="service-card">
-            <h3>Emergency Services</h3>
-            <p>24/7 emergency response for urgent roof issues</p>
-        </div>
-        <div class="service-card">
-            <h3>Roof Inspections</h3>
-            <p>Detailed inspections with comprehensive reports</p>
-        </div>
-        <div class="service-card">
-            <h3>Energy Efficiency</h3>
-            <p>Eco-friendly roofing solutions to reduce energy costs</p>
-        </div>
-    </div>
-</div>
+    </header>
 
-<div class="section" style="text-align: center; background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);">
-    <h2>💬 Request a Quote</h2>
-    <p style="margin: 1rem 0; font-size: 1.1rem;">Get a free estimate for your roofing needs</p>
-    <a href="/contact/" class="cta-button">Contact Us Today</a>
-</div>
-{% endblock %}
+    <!-- ==========================================
+    PAGE HERO
+    ========================================== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our <span>Services</span></h1>
+            <p>Comprehensive roofing and construction solutions</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    SERVICE: ROOF INSTALLATION
+    ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="service-detail">
+                <h2><i class="fas fa-building"></i> 🏗️ Roof Installation</h2>
+                <p>Whether you're building a new home or office, we provide professional roof installation services using premium materials and proven techniques.</p>
+
+                <h3>Includes:</h3>
+                <ul>
+                    <li>Professional assessment and planning</li>
+                    <li>Quality material selection</li>
+                    <li>Expert installation</li>
+                    <li>Weather seal protection</li>
+                    <li>Quality inspection</li>
+                </ul>
+
+                <span class="price-tag">Starting from: $2,500</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    SERVICE: ROOF REPAIRS
+    ========================================== -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="service-detail">
+                <h2><i class="fas fa-tools"></i> 🔧 Roof Repairs</h2>
+                <p>Leaky or damaged roof? We can diagnose and fix the problem quickly to prevent further damage to your property.</p>
+
+                <h3>Common Repairs:</h3>
+                <ul>
+                    <li>Leak detection and repair</li>
+                    <li>Shingle replacement</li>
+                    <li>Flashing repair</li>
+                    <li>Gutter repair and maintenance</li>
+                    <li>Storm damage repair</li>
+                    <li>Chimney and vent sealing</li>
+                </ul>
+
+                <span class="price-tag">Starting from: $500</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    SERVICE: ROOF MAINTENANCE
+    ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="service-detail">
+                <h2><i class="fas fa-broom"></i> 🧹 Roof Maintenance</h2>
+                <p>Regular maintenance extends your roof's lifespan and prevents costly repairs down the road.</p>
+
+                <h3>Maintenance Services:</h3>
+                <ul>
+                    <li>Annual roof inspection</li>
+                    <li>Debris removal</li>
+                    <li>Gutter cleaning</li>
+                    <li>Moss and algae treatment</li>
+                    <li>Minor repairs and adjustments</li>
+                    <li>Preventive care consultation</li>
+                </ul>
+
+                <span class="price-tag">Annual Plans Available</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    SPECIALTY SERVICES
+    ========================================== -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Specialty Services</span>
+                <h2>🏘️ Specialty <i>Services</i></h2>
+                <p>Additional services to meet all your roofing needs</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="icon">🏢</span>
+                    <h3>Commercial Roofing</h3>
+                    <p>Large-scale commercial projects handled by our expert team with minimal disruption</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">🚨</span>
+                    <h3>Emergency Services</h3>
+                    <p>24/7 emergency response for urgent roof issues</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">🔍</span>
+                    <h3>Roof Inspections</h3>
+                    <p>Detailed inspections with comprehensive reports</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">🌿</span>
+                    <h3>Energy Efficiency</h3>
+                    <p>Eco-friendly roofing solutions to reduce energy costs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    CTA SECTION
+    ========================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2><i class="fas fa-comment-dots"></i> 💬 Request a Quote</h2>
+            <p>Get a free estimate for your roofing needs</p>
+            <a href="contact.html" class="btn-primary">
+                <i class="fas fa-paper-plane"></i> Contact Us Today
+            </a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    FOOTER
+    ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-hard-hat"></i> Asmara Roofing</h3>
+                    <p>Your trusted partner for professional roofing and construction services. Quality, reliability, and excellence since 2008.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="/">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="services.html">Roof Installation</a>
+                    <a href="services.html">Roof Repairs</a>
+                    <a href="services.html">Maintenance</a>
+                    <a href="services.html">Inspection</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:+15879739400"><i class="fas fa-phone"></i> +1(587) 973-9400</a>
+                    <a href="mailto:asmararoofing@gmail.com"><i class="fas fa-envelope"></i> asmararoofing@gmail.com</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> 123 Main St, Asmara</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Asmara Roofing & Construction. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart" style="color: #e67e22;"></i> for our customers</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
